@@ -1,0 +1,25 @@
+.header {
+  z-index: z(nav);
+  height: 100px;
+  width: 100%;
+  //position: absolute;
+  .container {
+    position: unset;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+&__list {
+  display: flex;
+  justify-content: space-between;
+  &-item {
+
+  }
+  &-link {
+    color: rebeccapurple;
+    margin: 10px;
+  }
+}
+
+}
+

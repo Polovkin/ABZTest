@@ -1,0 +1,29 @@
+input {
+  &:valid:not(:placeholder-shown) {
+    color: $color__success;
+    border: {
+      color: $color__success;
+      style: solid;
+    }
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    color: $color__error;
+    border: {
+      color: $color__error;
+      style: solid;
+    }
+  }
+}
+
+form label {
+  span.error {
+    transition: all .3s;
+    position: relative;
+    color: $color__error;
+    font-size: 13px;
+    top: -7px;
+    left: 7px;
+    opacity: 0;
+  }
+}

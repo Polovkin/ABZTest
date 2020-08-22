@@ -1,0 +1,28 @@
+header.header
+  .container
+    button.header__toggle press
+    nav.header__nav
+      ul.header__list
+        -
+          let list = [
+            {
+              text: 'home',
+              url: '/'
+            },
+            {
+              text: 'about',
+              url: '/about'
+            },
+            {
+              text: 'contacts',
+              url: '/contacts'
+            },
+            {
+              text: 'portfolio',
+              url: '/portfolio'
+            },
+
+          ]
+        each items in list
+          li.header__list-item
+            a.header__list-link(href=items.url)=items.text
