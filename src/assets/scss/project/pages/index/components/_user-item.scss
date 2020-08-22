@@ -1,0 +1,82 @@
+.user {
+  &__card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-bottom: 55px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 17px 5px 0;
+
+    text-align: center;
+  }
+
+  &__photo {
+    @include size(80px);
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+  }
+
+  &__name {
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  &__email {
+    position: relative;
+
+    margin: 12px 0;
+
+    cursor: pointer;
+
+    &-text {
+      overflow: hidden;
+
+      max-width: 200px;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &:hover:after {
+      visibility: visible;
+
+      opacity: 1;
+    }
+
+    &:after {
+      position: absolute;
+      z-index: z(content);
+      bottom: -40px;
+      left: 0;
+      font-size: 14px;
+      visibility: hidden;
+
+      padding: 5px 12px;
+
+      content: attr(data-email);
+      transition: all $animation-medium;
+
+      opacity: 0;
+      color: $color__font--secondary;
+      border-radius: 4px;
+      background-color: #323231;
+    }
+  }
+}
