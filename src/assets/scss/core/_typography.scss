@@ -1,14 +1,12 @@
-$font__line-height: auto;
-$font__size: 18px;
+$font__line-height: 24px;
+$font__size: 16px;
 $font__weight: normal;
-$font__family: 'Lato';
-$font__style:  sans-serif;
-$font__file-name: 'Lato-';
+$font__family: 'Open Sans';
+$font__style: sans-serif;
+$font__file-name: 'OpenSans-';
 $font__path: '/assets/fonts/#{$font__file-name}';
-$font__ext: (woff2, woff, ttf, eot);
+$font__ext: (woff2, woff);
 $font__types: (
-                ('Light', 300, normal),
-                ('Bold', bold, normal),
                 ('Regular', normal, normal),
 );
 
@@ -20,32 +18,32 @@ $font__types: (
 html {
   font-size: $font__size;
   line-height: $font__line-height;
-
   height: 100%;
-  @include breakpoint ($desktop__laptop) {
+
+  @include breakpoint($desktop__laptop) {
     font-size: 16px;
   }
+
   @include breakpoint($tablet__all) {
     font-size: 15px;
   }
+
   @include breakpoint(($width__mobile-min + 1) $width__tablet-port) {
     font-size: 14px;
   }
-  @include breakpoint($width__min  ($width__mobile-min + 1)) {
+
+  @include breakpoint($width__min ($width__mobile-min + 1)) {
     font-size: 12px;
   }
 }
 
 body {
-  font-family: $font__family , $font__style;
+  font-family: $font__family, $font__style;
   font-size: $font__size;
   font-weight: $font__weight;
-
   margin: 0;
   padding: 0;
-
   color: $color__font--primary;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -56,11 +54,8 @@ main {
 
 button {
   font: inherit;
-
   padding: 0;
-
   cursor: pointer;
-
   color: inherit;
   border: none;
   background-color: transparent;
@@ -87,7 +82,6 @@ ul,
 li {
   margin: 0;
   padding: 0;
-
   list-style-type: none;
 }
 
@@ -103,7 +97,6 @@ img {
   width: 100%;
   max-width: 100%;
   height: auto;
-
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -116,11 +109,9 @@ a {
   text-decoration: none;
   color: $color__font--primary;
 
-
   &:hover,
   &:focus {
     text-decoration: none;
-
     outline: 0;
   }
 }
@@ -129,92 +120,7 @@ p:last-of-type {
   margin-bottom: 0;
 }
 
-h1 {
-  h2 {
-    font-size: 45px;
-    line-height: 60px;
 
-    @include breakpoint($tablet__all) {
-      font-size: 34px;
-      line-height: 46px;
-    }
-    @include breakpoint($phone__all) {
-      font-size: 30px;
-      line-height: 40px;
-    }
-
-    span {
-      font-size: 70px;
-      line-height: 94px;
-
-      @include breakpoint($tablet__all) {
-        font-size: 53px;
-        line-height: 70px;
-      }
-      @include breakpoint($phone__all) {
-        font-size: 45px;
-        line-height: 60px;
-      }
-    }
-  }
-
-  p {
-    font-size: 30px;
-    line-height: 40px;
-
-    @include breakpoint($tablet__all) {
-      font-size: 22px;
-      line-height: 30px;
-    }
-    @include breakpoint($phone__all) {
-      font-size: 20px;
-      line-height: 27px;
-    }
-  }
-}
-
-h2 {
-  font-size: 50px;
-  line-height: 67px;
-
-  @include breakpoint($tablet__all) {
-    font-size: 35px;
-    line-height: 47px;
-  }
-  @include breakpoint($phone__all) {
-    font-size: 30px;
-    line-height: 40px;
-  }
-}
-
-h3 {
-  font-size: 30px;
-  line-height: 40px;
-
-  @include breakpoint($phone__all) {
-    font-size: 25px;
-    line-height: 33px;
-  }
-}
-
-p {
-  font-size: 20px;
-  line-height: 33px;
-
-  @include breakpoint($mobile__all) {
-    line-height: 27px;
-  }
-}
-
-a {
-  font-size: 20px;
-  line-height: 27px;
-
-  @include breakpoint($tablet__all) {
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
 button:hover,
 input[type='button']:hover,
 input[type='reset']:hover,
@@ -259,7 +165,6 @@ input {
   &[type='datetime-local'],
   &[type='color'] {
     width: 100%;
-
     outline: 0;
 
     &:focus {
@@ -271,9 +176,8 @@ input {
 
 textarea {
   width: 100%;
-
-  outline: 0;
   resize: none;
+  outline: 0;
 
   &:focus {
     outline: 0;
@@ -295,16 +199,66 @@ textarea {
   width: 100%;
 }
 
-
 form > label {
   width: 100%;
 
-  input, textarea {
-    width: inherit;
+  input,
+  textarea {
     font-family: $font__family;
     font-size: rem($font__size);
 
+    width: inherit;
     color: $color__font--primary;
+  }
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 54px;
+  @include breakpoint($tablet__all) {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  @include breakpoint($phone__all) {
+    font-size: 30px;
+    line-height: 34px;
+  }
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+a {
+
+  &:hover {
+    color: $color__primary;
+  }
+
+  &:active {
+    color: $color__secondary;
+  }
+}
+
+.section__title {
+  margin-bottom: 70px;
+  h2 {
+    text-align: center;
+    @extend h1;
+  }
+
+  p {
+    margin: 25px auto 0;
+    text-align: center;
+    max-width: 450px;
+
   }
 
 }

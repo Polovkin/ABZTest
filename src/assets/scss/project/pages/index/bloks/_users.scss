@@ -1,0 +1,11 @@
+.users {
+  background-color: $color__block--light;
+
+  &__content {
+    position: relative;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 200px);
+    grid-auto-columns: auto;
+  }
+}

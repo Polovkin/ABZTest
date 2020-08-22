@@ -1,16 +1,46 @@
 button {
-  $color: #a6ff00;
-  padding: 10px 25px;
-  border: 1px solid $color;
-  margin: 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  color: $color;
-  transition: all .2s;
-  &:hover {
-    color: white;
-    background-color: $color;
-    border-color: $color;
+  font-weight: 600;
+
+  transition: all $animation-fast;
+}
+
+a {
+  transition: all $animation-fast;
+}
+
+.button {
+  &-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 210px;
+    padding: 8px 0;
+
+    color: $color__font--secondary;
+    border-radius: 4px;
+    background-color: $color__primary;
+
+    &:hover {
+      color: $color__font--secondary;
+      background-color: darken($color__primary, 8%);
+    }
+
+    &--disabled {
+      pointer-events: none;
+
+      color: #8d8c8c;
+      background-color: #d7d7d7;
+    }
   }
 
+  &-flat {
+    display: block;
+
+    color: $color__primary;
+
+    &:hover {
+      color: darken($color__primary, 10%);
+    }
+  }
 }

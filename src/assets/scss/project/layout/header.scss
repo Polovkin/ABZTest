@@ -1,25 +1,36 @@
 .header {
+  position: fixed;
   z-index: z(nav);
-  height: 100px;
+
   width: 100%;
-  //position: absolute;
-  .container {
-    position: unset;
+  height: 60px;
+
+  background-color: $color__light;
+
+  &__toggler {
+    display: none;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  &__nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-  }
-&__list {
-  display: flex;
-  justify-content: space-between;
-  &-item {
 
-  }
-  &-link {
-    color: rebeccapurple;
-    margin: 10px;
+    ul {
+      display: flex;
+
+      li {
+        margin-left: 28px;
+      }
+    }
   }
 }
-
-}
-

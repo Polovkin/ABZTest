@@ -1,0 +1,48 @@
+.main {
+  display: flex;
+  justify-content: flex-start;
+
+  height: 600px;
+
+  background-image: url($imgPath + 'banner-photo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.container {
+    padding: 60px 15px 0;
+  }
+
+  &__title {
+    font-weight: normal;
+
+    max-width: 540px;
+    padding-left: 15px;
+
+    text-transform: uppercase;
+
+    color: $color__light;
+  }
+
+  &__description {
+    overflow: hidden;
+
+    max-height: 120px;
+    margin-top: 25px;
+    padding-left: 16px;
+
+    text-overflow: ellipsis;
+
+    color: $color__light;
+  }
+
+  &__button {
+    margin-top: 34px;
+    margin-left: 15px;
+  }
+
+  &__wrap {
+    flex-basis: 55%;
+
+    margin-top: 107px;
+  }
+}

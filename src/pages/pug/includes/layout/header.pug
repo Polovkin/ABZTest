@@ -1,28 +1,22 @@
 header.header
   .container
-    button.header__toggle press
-    nav.header__nav
-      ul.header__list
-        -
-          let list = [
-            {
-              text: 'home',
-              url: '/'
-            },
-            {
-              text: 'about',
-              url: '/about'
-            },
-            {
-              text: 'contacts',
-              url: '/contacts'
-            },
-            {
-              text: 'portfolio',
-              url: '/portfolio'
-            },
+    .header__wrap
+      +LinkImg('logo.svg','/','logotype')
 
-          ]
-        each items in list
-          li.header__list-item
-            a.header__list-link(href=items.url)=items.text
+      span.header__toggler
+      nav.header__nav
+        ul.header__nav-list
+            -
+              let listData = [
+                {text: 'About me', link: 'https://www.work.ua/ru/resumes/5585512/'},
+                {text: 'Relationships', link: '/'},
+                {text: 'Requirements', link: '/'},
+                {text: 'Users', link: '/'},
+                {text: 'Sign Up', link: '/#form'},
+              ]
+            each item,index in listData
+              li.header__nav-item
+                a.header__nav-link(
+                  href = item.link,
+                  target=index!==4 ? '_blank': '')
+                  =item.text
