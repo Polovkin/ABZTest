@@ -80,7 +80,7 @@
             p {{fileName}}
             label(for="file") Browse
           span.error(v-if="fileValid") File error (jpg,png, <5mb)
-      button.button-primary.registration__submit(type='submit')
+      button#submit.button-primary.registration__submit(type='submit')
         | Sing up now
 </template>
 
@@ -115,7 +115,7 @@ export default {
   },
   async mounted() {
     this.positions = await this.$store.dispatch('GET_POSITIONS_DATA');
-    await this.$store.dispatch('GET_TOKEN');
+    await this.$store.dispatch('GET_NEW_TOKEN');
   },
   methods: {
     async submitHandler() {
@@ -126,8 +126,9 @@ export default {
 
       if (this.$refs.file.files[0] !== undefined) {
         let formData = new FormData();
-        formData.append('name', this.email);
-        formData.append('email', this.name);
+
+        formData.append('name', this.name);
+        formData.append('email', this.email);
         formData.append('phone', this.phone.replace(/\s/g, '').replace(/[\])}[{(]/g, ''));
         formData.append('position_id', this.radioSelected);
         formData.append('photo', this.$refs.file.files[0]);
