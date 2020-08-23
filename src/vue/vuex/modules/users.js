@@ -27,6 +27,9 @@ export default {
         SET_ITEMS_PAGE: (state) => {
             state.itemsPage++
         },
+        RESET_ITEM_PAGE: (state) => {
+            state.itemsPage=1;
+        },
         ADD_USERS_DATA: (state, data) => {
             state.users = state.users.concat(data)
         },
