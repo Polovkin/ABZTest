@@ -74,6 +74,7 @@
   ],
   "dependencies": {
     "normalize.css": "^8.0.1",
+    "v-mask": "^2.2.3",
     "vue": "^2.6.12"
   }
 }

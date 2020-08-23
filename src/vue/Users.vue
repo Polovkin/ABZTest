@@ -1,46 +1,27 @@
 <template lang="pug">
   #users
     .users__content
-      template(v-for="user of users")
+      template(v-for="user of GET_USERS")
         UserItem(:user-data="user")
-    button.button-primary(
-      v-if="buttonState",
-      @click="showMore",
-      :class="{'button-primary--disabled':buttonDisable}") Show more
+    button.users__button.button-primary(
+      v-if="BUTTON_SHOW",
+      @click="GET_MORE_USERS",
+      :class="{'button-primary--disabled':GET_BUTTON_STATUS}") Show more
 
 
 </template>
 
 <script>
 import UserItem from './components/app/User-item.vue'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'Users',
   components: {UserItem},
-  data() {
-    return {
-
-    }
-  },
-  mounted() {
-    this.$store.dispatch('GET_USERS_DATA');
-  },
-  computed: {
-    users() {
-      return this.$store.getters.GET_USERS;
-    },
-    buttonDisable() {
-      return this.$store.getters.GET_BUTTON_STATUS;
-    },
-    buttonState() {
-      return this.$store.getters.GET_BUTTON_STATE;
-    },
-  },
-  methods: {
-     showMore() {
-
-      this.$store.dispatch('GET_MORE_USERS')
-    }
+  computed: mapGetters(["GET_USERS", "GET_BUTTON_STATUS","BUTTON_SHOW"]),
+  methods: mapActions(["GET_MORE_USERS", "GET_USERS_DATA"]),
+  async mounted() {
+    this.GET_USERS_DATA();
   },
 };
 
