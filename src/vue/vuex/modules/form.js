@@ -1,4 +1,4 @@
-const axios = require('axios').default;
+
 
 const url = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
 export default {
@@ -38,23 +38,6 @@ export default {
             });
             commit('RESET_ITEM_PAGE');
             dispatch('GET_USERS_DATA');
-            // axios(`${url}users`, {
-            //     method: 'POST',
-            //     body: data,
-            //     headers: {
-            //         'Token': token,
-            //     },
-            // }).catch(function (error) {
-            //     if (error.response) {
-            //         console.log(error.response)
-            //     } else if (error.request) {
-            //         console.log(error.request);
-            //     } else {
-            //         console.log('Error', error.message);
-            //     }
-            //     console.log(error.config);
-            // });
-
 
         },
         GET_POSITIONS_DATA: async () => {

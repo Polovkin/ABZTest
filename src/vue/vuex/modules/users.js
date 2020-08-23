@@ -1,6 +1,7 @@
-const axios = require('axios').default;
+
 const token = 'eyJpdiI6Im9mV1NTMlFZQTlJeWlLQ3liVks1MGc9PSIsInZhbHVlIjoiRTJBbUR4dHp1dWJ3ekQ4bG85WVZya3ZpRGlMQ0g5ZHk4M05UNUY4Rmd3eFM3czc2UDRBR0E4SDR5WXlVTG5DUDdSRTJTMU1KQ2lUQmVZYXZZOHJJUVE9PSIsIm1hYyI6ImE5YmNiODljZjMzMTdmMDc4NjEwN2RjZTVkNzBmMWI0ZDQyN2YzODI5YjQxMzE4MWY0MmY0ZTQ1OGY4NTkyNWQifQ=='
 const ulr = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
+import 'whatwg-fetch'
 
 export default {
     state: {
@@ -38,10 +39,16 @@ export default {
         GET_USERS_DATA: async ({commit, getters}) => {
             try {
                 let page = getters.GET_ITEMS_PAGE
-                const response = await axios(`${ulr}users?page=${page}&count=6`);
+                const response = await window.fetch(`${ulr}users?page=${page}&count=6`)
 
-                commit('SET_TOTAL_PAGES', response.data.total_pages);
-                commit('SET_USERS_DATA', response.data.users);
+                if (response.ok) {
+                    let json = await response.json();
+                    commit('SET_TOTAL_PAGES', json.total_pages);
+                    commit('SET_USERS_DATA', json.users);
+                } else {
+                    console.log("HTTP error: " + response.status);
+                }
+
             } catch (e) {
                 console.log(e);
             }
@@ -54,12 +61,16 @@ export default {
                 let page = getters.GET_ITEMS_PAGE;
                 let totalPages = getters.GET_TOTAL_PAGES
                 if (page <= totalPages) {
-                    const response = await axios(`${ulr}users?page=${page}&count=6`);
-                    commit('ADD_USERS_DATA', response.data.users);
-                    if (response.data.success) {
-                        commit('SET_BUTTON_STATUS')
+                    const response = await window.fetch(`${ulr}users?page=${page}&count=6`);
+                    if (response.ok) {
+                        let json = await response.json();
+                        commit('ADD_USERS_DATA', json.users);
+                        if (json.success) {
+                            commit('SET_BUTTON_STATUS')
+                        }
+                        return true;
                     }
-                    return true;
+
                 } else {
                     commit('SET_BUTTON_SHOW', false)
                 }
