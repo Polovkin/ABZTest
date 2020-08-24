@@ -16,6 +16,9 @@
   &__button {
     margin: 0 auto;
   }
+  &__alert {
+    text-align: center;
+  }
 }
 
 @import "../components/user-item";

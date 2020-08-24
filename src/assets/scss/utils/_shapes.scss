@@ -120,7 +120,7 @@
   }
 }
 
-@mixin burgerLines($quantity,$line-height) {
+@mixin burgerLines($quantity,$line-height,$color) {
   .burger-shape {
     width: 100%;
     height: 100%;
@@ -128,13 +128,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     @for $i from 1 through $quantity {
       div:nth-child(#{$i}) {
         display: block;
         @include size(100%, $line-height);
-        background-color: $color__light;
-        border-radius: 10px;
+        background-color: $color;
       }
     }
   }

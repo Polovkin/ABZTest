@@ -1,14 +1,24 @@
 .header {
-  position: fixed;
-  z-index: z(nav);
+  &__main {
+    position: fixed;
+    z-index: z(header);
 
-  width: 100%;
-  height: 60px;
+    width: 100%;
+    height: 60px;
 
-  background-color: $color__light;
+    background-color: $color__light;
+  }
+
 
   &__toggler {
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
     display: none;
+    @include burgerLines(3,4px,$color__dark);
+    @include breakpoint($mobile__all) {
+      display: block;
+    }
   }
 
   &__wrap {
@@ -25,12 +35,75 @@
     display: flex;
     justify-content: space-between;
 
-    ul {
+    &-list {
       display: flex;
-
-      li {
-        margin-left: 28px;
+      @include breakpoint($mobile__all) {
+        display: flex;
+        flex-direction: column;
       }
     }
+
+    &-item {
+      margin-left: 28px;
+      @include breakpoint($mobile__all) {
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-left: 15px;
+        margin-left: 0;
+        &:nth-of-type(5n+5) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+
   }
+
+  &__mobile {
+    position: fixed;
+    z-index: z(nav);
+    width: 290px;
+    height: 100%;
+    display: none;
+    background-color: white;
+    overflow: auto;
+    &.show {
+      display: block;
+    }
+
+  }
+
+  .desktop__nav {
+    display: none;
+    @include breakpoint($desktop__all) {
+      display: block;
+    }
+  }
+
+  .mobile {
+    &__nav {
+      display: block;
+    }
+
+    &__hr {
+      width: 290px;
+      height: 1px;
+      margin: 30px 0;
+      background-color: $color__border--primary;
+      &:last-child {
+        display: none;
+      }
+    }
+
+    &__logotype {
+      display: flex;
+      padding-left: 15px;
+      align-items: center;
+      border-bottom: 1px solid $color__border--primary;
+      width: 100%;
+      height: 40px;
+      margin-bottom: 30px;
+    }
+  }
+
 }

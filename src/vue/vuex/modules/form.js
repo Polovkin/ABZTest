@@ -1,18 +1,19 @@
-
-
 const url = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
 export default {
     state: {
-        token: ''
+        token: '',
+        modalStatus: false,
     },
     mutations: {
         SET_TOKEN: (state, data) => {
             state.token = data;
+        },
+        SET_MODAL_STATUS: (state,status) => {
+            state.modalStatus = status;
         }
     },
     actions: {
-        SEND_FORM: async ({getters,dispatch,commit}, data) => {
-
+        SEND_FORM: async ({getters, dispatch, commit}, data) => {
 
             const token = getters.GET_TOKEN
             let formData = new FormData();
@@ -30,20 +31,25 @@ export default {
                 }).then(function (data) {
                 console.log(data);
                 if (data.success) {
+                    commit('RESET_ITEM_PAGE');
+                    dispatch('GET_USERS_DATA');
+                    commit('SET_MODAL_STATUS',true)
                 } else {
+                    console.log('problems')
                 }
             }).catch(function (error) {
-
-                console.log(error);
+                alert(error);
             });
-            commit('RESET_ITEM_PAGE');
-            dispatch('GET_USERS_DATA');
-
         },
         GET_POSITIONS_DATA: async () => {
             try {
-                const response = await axios(`${url}positions`);
-                return response.data.positions
+                const response = await fetch(`${url}positions`);
+                if (response.ok) {
+                    let json = await response.json();
+                    return await json.positions
+                } else {
+                    console.log("Ошибка HTTP: " + response.status);
+                }
             } catch (e) {
                 console.log(e);
             }
@@ -51,8 +57,13 @@ export default {
         },
         GET_NEW_TOKEN: async ({commit}) => {
             try {
-                const response = await axios(`https://frontend-test-assignment-api.abz.agency/api/v1/token`);
-                commit('SET_TOKEN', response.data.token)
+                const response = await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/token`);
+                if (response.ok) {
+                    let json = await response.json()
+                    commit('SET_TOKEN', json.token)
+                } else {
+                    console.log("Ошибка HTTP: " + response.status);
+                }
 
             } catch (e) {
                 console.log(e);
@@ -62,6 +73,9 @@ export default {
     getters: {
         GET_TOKEN: (state) => {
             return state.token
+        },
+        GET_MODAL_STATUS: (state) => {
+            return state.modalStatus
         }
     },
 }

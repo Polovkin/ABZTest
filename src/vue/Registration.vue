@@ -1,5 +1,6 @@
 <template lang="pug">
   #registration
+    Modal
     form#form.registration__form(@submit.prevent="submitHandler")
 
       .registration__item
@@ -53,6 +54,7 @@
             | The Name field must not be empty
           span.error(v-else-if="($v.phone.$dirty && !$v.phone.isPhone)")
             | Please enter a valid phone number
+
       .registration__item.registration__item-position
         p.registration__item-title Select your position
         template(v-for="(radio,index) in positions")
@@ -86,10 +88,12 @@
 
 <script>
 import {email, required, minLength, maxLength} from 'vuelidate/lib/validators'
+import Modal from './components/app/Modal.vue'
 
 
 export default {
   name: "Login",
+  components: {Modal},
   data() {
     return {
       email: '',

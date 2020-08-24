@@ -1,22 +1,58 @@
 header.header
-  .container
-    .header__wrap
-      +LinkImg('logo.svg','/','logotype')
+    -
+      let listData = [
+        {text: 'About me', link: 'https://www.work.ua/ru/resumes/5585512/'},
+        {text: 'Relationships', link: '/'},
+        {text: 'Requirements', link: '/'},
+        {text: 'Users', link: '/'},
+        {text: 'Sign Up ', link: '/#reg'},
 
-      span.header__toggler
-      nav.header__nav
+        {text: 'Terms and Conditions', link: '/'},
+        {text: 'How it works', link: '/'},
+        {text: 'Partnership', link: '/'},
+        {text: 'Help', link: '/'},
+        {text: 'Leave testimonial', link: '/'},
+        {text: 'Contact us', link: '/'},
+        {text: 'Articles', link: '/'},
+        {text: 'Our news', link: '/'},
+        {text: 'Testimonials', link: '/'},
+        {text: 'Licenses', link: '/'},
+        {text: 'Privacy Policy', link: '/'},
+      ]
+    .header__main
+      .container
+        .header__wrap
+          +LinkImg('logo.svg','/','logotype')
+
+          span.header__toggler
+            .burger-shape
+              div
+              div
+              div
+          nav.header__nav.desktop__nav
+            ul.header__nav-list
+
+                each item,index in listData
+                  if index < 5
+                    li.header__nav-item
+                      a.header__nav-link(
+                        href = item.link,
+                        target=index !== 4 ? '_blank' : '')
+                        =item.text
+
+    .header__mobile
+      nav.header__nav.mobile__nav
+        .mobile__logotype
+          +LinkImg('logo.svg','/','logotype')
+
         ul.header__nav-list
-            -
-              let listData = [
-                {text: 'About me', link: 'https://www.work.ua/ru/resumes/5585512/'},
-                {text: 'Relationships', link: '/'},
-                {text: 'Requirements', link: '/'},
-                {text: 'Users', link: '/'},
-                {text: 'Sign Up', link: '/#reg'},
-              ]
+
             each item,index in listData
-              li.header__nav-item
-                a.header__nav-link(
-                  href = item.link,
-                  target=index!==4 ? '_blank': '')
-                  =item.text
+              if index !== 2
+                li.header__nav-item
+                  a.header__nav-link(
+                    href = item.link,
+                    target=index !== 4 ? '_blank' : '')
+                    =item.text
+              if index % 5 === 0 && index !== 0
+                span.mobile__hr

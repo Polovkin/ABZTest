@@ -7,7 +7,7 @@
       v-if="BUTTON_SHOW",
       @click="GET_MORE_USERS",
       :class="{'button-primary--disabled':GET_BUTTON_STATUS}") Show more
-
+    p.users__alert(v-else) No more users
 
 </template>
 
