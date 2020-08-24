@@ -1,12 +1,20 @@
 .acquainted {
   &__content {
     display: flex;
+    @include breakpoint($phone__all) {
+      flex-direction: column;
+    }
   }
 
   &__img {
     flex-basis: 420px;
 
     padding: 0 40px;
+    @include breakpoint($phone__all) {
+      flex-basis: auto;
+      padding: 0;
+      margin-bottom: 40px;
+    }
   }
 
   &__block {
@@ -24,6 +32,15 @@
 
     &-button {
       margin-top: 35px;
+    }
+
+    @include breakpoint($phone__all) {
+      padding-left: 0;
+      flex-basis: auto;
+      text-align: center;
+      p {
+        text-align: left;
+      }
     }
   }
 }

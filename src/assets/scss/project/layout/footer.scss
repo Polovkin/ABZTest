@@ -1,0 +1,10 @@
+.footer {
+  border-top: 1px solid $color__border--primary;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  &__text {
+    text-align: center;
+  }
+}

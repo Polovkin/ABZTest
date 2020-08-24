@@ -50,10 +50,10 @@ body > section,
   @include breakpoint($width__desktop-min) {
     padding: 160px 0;
   }
-  @include breakpoint($width__tablet-land) {
+  @include breakpoint($width__tablet-port) {
     padding: 100px 0;
   }
-  @include breakpoint($width__tablet-port) {
+  @include breakpoint($width__min) {
     padding: 80px 0;
   }
 

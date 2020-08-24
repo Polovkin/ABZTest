@@ -3,21 +3,33 @@
 
   &__content {
     position: relative;
-    display: grid;
-    justify-content: space-between;
-    grid: {
-      template: {
-        columns: repeat(3, 200px);
-        rows: repeat(2, auto);
+
+
+
+    @include breakpoint($width__tablet-port) {
+      display: grid;
+      justify-content: space-between;
+      grid: {
+        template: {
+          columns: repeat(3, 200px);
+          rows: repeat(2, auto);
+        };
       };
-    };
+    }
   }
 
   &__button {
     margin: 0 auto;
   }
+
   &__alert {
     text-align: center;
+  }
+
+  @include breakpoint($phone__all) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

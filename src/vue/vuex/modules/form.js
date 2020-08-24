@@ -16,7 +16,6 @@ export default {
         SEND_FORM: async ({getters, dispatch, commit}, data) => {
 
             const token = getters.GET_TOKEN
-            let formData = new FormData();
 
             fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users',
                 {
