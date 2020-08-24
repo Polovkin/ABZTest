@@ -1,7 +1,7 @@
 // JS
 import '../src/js/utils/lazyloading';
 import '../src/js/scripts/custom';
-import '../src/js/project/modules/forms'
+import '../src/js/project/layouts/header';
 
 // SCSS
 import '@/assets/scss/main.scss';
