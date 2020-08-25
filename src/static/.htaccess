@@ -1,0 +1,9 @@
+<filesMatch ".(ico|jpg|jpeg|png|gif)$">
+ Header set Cache-Control "max-age=2592000, public"
+</filesMatch>
+<filesMatch ".(css|js)$">
+ Header set Cache-Control "max-age=86400, public"
+</filesMatch>
+<filesMatch ".(woff|woff2)$">
+ Header set Cache-Control "max-age=86400, public"
+</filesMatch>
