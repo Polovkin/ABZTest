@@ -51,7 +51,7 @@
             :class="{'invalid': (($v.phone.$dirty && !$v.phone.required) || ($v.phone.$dirty && !$v.phone.isPhone))}"
           )
           span.error(v-if="($v.phone.$dirty && !$v.phone.required)")
-            | The Name field must not be empty
+            | The Phone field must not be empty
           span.error(v-else-if="($v.phone.$dirty && !$v.phone.isPhone)")
             | Please enter a valid phone number
 
