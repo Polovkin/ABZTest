@@ -3,13 +3,20 @@ export default {
     state: {
         token: '',
         modalStatus: false,
+        modalMsg: {
+            title: "",
+            msg: '',
+        },
     },
     mutations: {
         SET_TOKEN: (state, data) => {
             state.token = data;
         },
-        SET_MODAL_STATUS: (state,status) => {
+        SET_MODAL_STATUS: (state, status) => {
             state.modalStatus = status;
+        },
+        SET_ERROR_MESSAGE: (state, data) => {
+            state.modalMsg = data
         }
     },
     actions: {
@@ -28,11 +35,15 @@ export default {
                 .then(function (response) {
                     return response.json();
                 }).then(function (data) {
+                commit('SET_ERROR_MESSAGE', {title: 'Error', msg: data.message});
+                commit('SET_MODAL_STATUS', true);
                 console.log(data);
+
                 if (data.success) {
                     commit('RESET_ITEM_PAGE');
                     dispatch('GET_USERS_DATA');
-                    commit('SET_MODAL_STATUS',true)
+                    commit('SET_ERROR_MESSAGE', {title: 'Congratulations', msg: 'You have successfully passed the registration'});
+                    commit('SET_MODAL_STATUS', true)
                 } else {
                     console.log('problems')
                 }
@@ -75,6 +86,9 @@ export default {
         },
         GET_MODAL_STATUS: (state) => {
             return state.modalStatus
-        }
+        },
+        GET_MODAL_MESSAGE: (state) => {
+            return state.modalMsg
+        },
     },
 }
