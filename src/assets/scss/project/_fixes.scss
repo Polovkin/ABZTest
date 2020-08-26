@@ -1,0 +1,17 @@
+@include ie11() {
+  .users__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .user {
+    &__card {
+      width: 200px;
+    }
+    &__name {
+      width: 100%;
+      max-width: 200px;
+      word-break: break-all;
+    }
+  }
+}

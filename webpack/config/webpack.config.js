@@ -33,7 +33,7 @@ const plugins = (type) => {
                 {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
                 {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
                 // {from: `${PATHS.src}/pages/php`, to: ``},
-                // {from: `${PATHS.src}/static`, to: ''},
+                 {from: `${PATHS.src}/static`, to: ''},
             ]
         }),
         new CleanWebpackPlugin(),
