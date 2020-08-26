@@ -30,7 +30,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.modal__content {
+  @include breakpoint($phone__all) {
+    width: 100%;
+  }
+}
+
 
 </style>
 

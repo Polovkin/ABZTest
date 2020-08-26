@@ -24,7 +24,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
     //     }),
     //   ],
     // }),
-    new CompressionPlugin()
+    //new CompressionPlugin()
   ],
 });
 
