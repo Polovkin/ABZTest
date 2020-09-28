@@ -9,7 +9,7 @@ node_modules
 # Dist & tests
 
 dist
-public
+docs
 # Logs:
 *.log
 npm-debug.log*
